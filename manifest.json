@@ -1,0 +1,29 @@
+{
+    "name": "Follow team",
+    "description" : "Follow an ICPC onsite team. Just load its public ranklist from Codechef, we will reload and notify you as soon as they make a submission",
+    "version": "1.6",
+    "manifest_version": 2,
+    "icons": {
+        "48": "icon.png",
+        "128": "icon.png"
+      },
+      "content_scripts": [
+        {
+        "matches": ["https://www.codechef.com/public/rankings/*"],
+          "run_at": "document_idle",
+        "js": ["rank.js"]
+        }
+      ],
+    "options_ui": {
+      "page": "options.html",
+      "open_in_tab": false
+    },
+    "browser_action": {
+      "default_popup": "options.html"
+    },
+    "background": {
+        "scripts": ["script.js"],
+        "persistent": true
+      },
+      "permissions": ["notifications","storage","webRequest"]
+}
